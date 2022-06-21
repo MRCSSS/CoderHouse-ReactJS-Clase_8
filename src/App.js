@@ -1,15 +1,23 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import ItemCount from './components/ItemCount';
+// import Footer from './components/Footer';
+import NavBar from './components/NavBar';
+import ProductDetailContainer from './pages/ProductDetailContainer';
+import ProductListContainer from './pages/ProductListContainer';
 
 function App() {
-
-  const onAdd = (count) => {
-    alert(`Son ${count} productos`);
-  }
-
   return (
     <>
-      <ItemCount inicial={1} max={15} onAdd={onAdd}/>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path='/' element={<ProductListContainer />} />
+          <Route path='/home' element={<ProductListContainer />} />
+          <Route path='/category/:category' element={<ProductListContainer />} />
+          <Route path='/item/:id' element={<ProductDetailContainer />} />
+        </Routes>
+        {/* <Footer /> */}
+      </BrowserRouter>
     </>
   );
 }
