@@ -1,10 +1,20 @@
-import React from 'react'
 import 'bulma/css/bulma.min.css';
+import { useState } from 'react';
 import { Button, Columns, Container, Heading, Image, Section } from 'react-bulma-components';
+import { Link } from 'react-router-dom';
 import ProductCount from './ProductCount';
 
 const ProductDetail = ({product}) => {
     const { id, title, description, regularPrice} = product
+
+    const [quantity, setQuantity] = useState(1);
+    const [shown, setShown] = useState(true);
+
+    const addToCart = () => {
+        alert(`Añadirás ${quantity} productos`);
+        setShown(false);
+        // isInCart()
+    }
 
     return (
         <Section>
@@ -20,8 +30,8 @@ const ProductDetail = ({product}) => {
                     </Columns.Column>
                     <Columns.Column size={4} textAlign='center'>
                         <Heading subtitle>$ {regularPrice}.00</Heading>
-                        <ProductCount inicial={1}/>
-                        <Button color="info">Agregar al Carrito</Button>
+                        {shown === true ? <ProductCount quantity={quantity} setQuantity= {setQuantity} addToCart={addToCart}/> : console.log('no shown')}
+                        {shown === true ? console.log('shown') : <Button color='info'><Link to={'/cart'} style={{color: 'white'}}>Ir al carrito</Link></Button>}
                     </Columns.Column>
                 </Columns>
             </Container>
