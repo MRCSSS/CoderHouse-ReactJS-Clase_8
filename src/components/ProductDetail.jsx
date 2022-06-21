@@ -30,8 +30,7 @@ const ProductDetail = ({product}) => {
                     </Columns.Column>
                     <Columns.Column size={4} textAlign='center'>
                         <Heading subtitle>$ {regularPrice}.00</Heading>
-                        {shown === true ? <ProductCount quantity={quantity} setQuantity= {setQuantity} addToCart={addToCart}/> : console.log('no shown')}
-                        {shown === true ? console.log('shown') : <Button color='info'><Link to={'/cart'} style={{color: 'white'}}>Ir al carrito</Link></Button>}
+                        {shown === true ? <ProductCount quantity={quantity} setQuantity= {setQuantity} addToCart={addToCart}/> : <Button color='info'><Link to={'/cart'} style={{color: 'white'}}>Ir al carrito</Link></Button>}
                     </Columns.Column>
                 </Columns>
             </Container>
